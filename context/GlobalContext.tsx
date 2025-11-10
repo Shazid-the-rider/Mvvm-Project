@@ -5,9 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 interface GlobalContextType {
     allTask: Object[];
     setAllTask: (tasks: Object[]) => void;
-    //AddTask: (title: string, message: string) => void;
-    //DeleteTask: (id: number) => void;
-    //EditTask: (id: number) => void;
+    
     text:string;
     setText:(text:string)=>void;
 
@@ -57,65 +55,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-   /* const AddTask = (title: string, message: string): void => {
-
-        if (title.trim() === "" || message.trim() === "") {
-            console.log("Cannot add empty task");
-            return;
-        }
-
-        const now = new Date();
-        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const dayName = days[now.getDay()];
-        const bar = now.getDate();
-        const monthName = months[now.getMonth()];
-        const year = now.getFullYear().toString().slice(2);
-        let hours = now.getHours();
-        const minute = now.getMinutes();
-        const ampm = hours >= 12 ? "pm" : "am";
-        hours = hours % 12 || 12;
-
-        const newTime: dateObj = {
-            dayName,
-            bar: bar.toString(),
-            monthName,
-            year,
-            hours: hours.toString(),
-            minute: minute.toString(),
-            ampm,
-        }
-
-        const newTask: Object = {
-            id: Date.now(),
-            title: title.trim(),
-            text: message.trim(),
-            date: newTime
-        }
-
-        setAllTask(prev => {
-            const newList = [newTask, ...prev];
-            return newList;
-        });
-        const updatedTasks = [newTask, ...allTask];
-        saveTasks(updatedTasks);
-    }*/
-
-    /*const DeleteTask = (id: number): void => {
-        const Filtered = allTask.filter((item) => item.id !== id);
-        setAllTask(Filtered);
-        saveTasks(Filtered);
-    }
-    const EditTask = (id: number,head:string,body:string):void=> {
-        
-        setAllTask((prev)=>prev.map((item)=>item.id===id?{...item,title:head,text:body}:item)); 
-        const updatedTasks = allTask.map((item)=>item.id===id?{...item,title:head,text:body}:item)
-        saveTasks(updatedTasks);
-    } */
+   
 
     return (
-        <GlobalContext.Provider value={{allTask, setAllTask,text, setText,header, setHeader,idNo, setIdno,filter, setFilter,saveTasks}}
-/*value={{ allTask, AddTask, DeleteTask,filter,setFilter, EditTask,text,setText,header,setHeader,idNo,setIdno}}*/ >
+        <GlobalContext.Provider value={{allTask, setAllTask,text, setText,header, setHeader,idNo, setIdno,filter, setFilter,saveTasks}} >
             {children}
         </GlobalContext.Provider>
     );
